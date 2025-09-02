@@ -1029,148 +1029,157 @@ do
         end
         -- // Esp Preview
         do
-            window.VisualPreview = {
-                Size = {X = 5, Y = 0},
-                Color1 = Color3.fromRGB(0, 255, 0),
-                Color2 = Color3.fromRGB(255, 0, 0),
-                HealthBarFade = 0,
-                Fading = false,
-                State = false,
-                Visible = false,
-                Drawings = {},
-                Components = {
-                    Box = {
-                        Outline = nil,
-                        Box = nil,
-                        Fill = nil
-                    },
-                    HealthBar = {
-                        Outline = nil,
-                        Box = nil,
-                        Value = nil
-                    },
-                    Skeleton = {
-                        Head = {},
-                        Torso = {},
-                        LeftArm = {},
-                        RightArm = {},
-                        Hips = {},
-                        LeftLeg = {},
-                        RightLeg = {},
-                        HipsTorso = {}
-                    },
-                    Chams = {
-                        Head = {},
-                        Torso = {},
-                        LeftArm = {},
-                        RightArm = {},
-                        LeftLeg = {},
-                        RightLeg = {}
-                    },
-                    Title = {
-                        Text = nil
-                    },
-                    Distance = {
-                        Text = nil
-                    },
-                    Tool = {
-                        Text = nil
-                    },
-                    Flags = {
-                        Text = nil
-                    }
-                }
-            }
-            --
-            local esppreview_frame = utility:Create("Frame", {Vector2.new(main_frame.Size.X + 5,0), main_frame}, {
-                Size = utility:Size(0, 236, 0, 339),
-                Position = utility:Position(1, 5, 0, 0, main_frame),
-                Color = theme.outline
-            }, window.VisualPreview.Drawings)
-            --
-            library.colors[esppreview_frame] = {
-                Color = "outline"
-            }
-            --
-            local esppreview_inline = utility:Create("Frame", {Vector2.new(1,1), esppreview_frame}, {
-                Size = utility:Size(1, -2, 1, -2, esppreview_frame),
-                Position = utility:Position(0, 1, 0, 1, esppreview_frame),
-                Color = theme.accent
-            }, window.VisualPreview.Drawings)
-            --
-            library.colors[esppreview_inline] = {
-                Color = "accent"
-            }
-            --
-            local esppreview_inner = utility:Create("Frame", {Vector2.new(1,1), esppreview_inline}, {
-                Size = utility:Size(1, -2, 1, -2, esppreview_inline),
-                Position = utility:Position(0, 1, 0, 1, esppreview_inline),
-                Color = theme.lightcontrast
-            }, window.VisualPreview.Drawings)
-            --
-            library.colors[esppreview_inner] = {
-                Color = "lightcontrast"
-            }
-            --
-            local esppreview_title = utility:Create("TextLabel", {Vector2.new(4,2), esppreview_inner}, {
-                Text = "ESP Preview",
-                Size = theme.textsize,
-                Font = theme.font,
-                Color = theme.textcolor,
-                OutlineColor = theme.textborder,
-                Position = utility:Position(0, 4, 0, 2, esppreview_inner)
-            }, window.VisualPreview.Drawings)
-            --
-            local esppreview_visiblebutton = utility:Create("TextLabel", {Vector2.new(esppreview_inner.Size.X - (5 + 7),2), esppreview_inner}, {
-                Text = "O",
-                Size = theme.textsize,
-                Font = theme.font,
-                Color = theme.textcolor,
-                OutlineColor = theme.textborder,
-                Position = utility:Position(1, -(5 + 7), 0, 2, esppreview_inner)
-            }, window.VisualPreview.Drawings)
-            --
-            library.colors[esppreview_title] = {
-                OutlineColor = "textborder",
-                Color = "textcolor"
-            }
-            --
-            local esppreview_inner_inline = utility:Create("Frame", {Vector2.new(4,18), esppreview_inner}, {
-                Size = utility:Size(1, -8, 1, -22, esppreview_inner),
-                Position = utility:Position(0, 4, 0, 18, esppreview_inner),
-                Color = theme.inline
-            }, window.VisualPreview.Drawings)
-            --
-            library.colors[esppreview_inner_inline] = {
-                Color = "inline"
-            }
-            --
-            local esppreview_inner_outline = utility:Create("Frame", {Vector2.new(1,1), esppreview_inner_inline}, {
-                Size = utility:Size(1, -2, 1, -2, esppreview_inner_inline),
-                Position = utility:Position(0, 1, 0, 1, esppreview_inner_inline),
-                Color = theme.outline
-            }, window.VisualPreview.Drawings)
-            --
-            library.colors[esppreview_inner_outline] = {
-                Color = "outline"
-            }
-            --
-            local esppreview_inner_frame = utility:Create("Frame", {Vector2.new(1,1), esppreview_inner_outline}, {
-                Size = utility:Size(1, -2, 1, -2, esppreview_inner_outline),
-                Position = utility:Position(0, 1, 0, 1, esppreview_inner_outline),
-                Color = theme.darkcontrast
-            }, window.VisualPreview.Drawings)
-            --
-            library.colors[esppreview_inner_frame] = {
-                Color = "darkcontrast"
-            }
-            --
-            local esppreview_frame_previewbox = utility:Create("Frame", {Vector2.new(10,10), esppreview_inner_frame}, {
-                Size = utility:Size(1, -20, 1, -20, esppreview_inner_frame),
-                Position = utility:Position(0, 10, 0, 10, esppreview_inner_frame),
-                Color = Color3.fromRGB(0, 0, 0),
-                Transparency = 0
-            })
+window.VisualPreview = {
+    Size = {X = 5, Y = 0},
+    Color1 = Color3.fromRGB(0, 255, 0),
+    Color2 = Color3.fromRGB(255, 0, 0),
+    HealthBarFade = 0,
+    Fading = false,
+    State = false,
+    Visible = false,
+    Drawings = {},
+    Components = {
+        Box = {
+            Outline = nil,
+            Box = nil,
+            Fill = nil
+        },
+        HealthBar = {
+            Outline = nil,
+            Box = nil,
+            Value = nil
+        },
+        Skeleton = {
+            Head = {},
+            Torso = {},
+            LeftArm = {},
+            RightArm = {},
+            Hips = {},
+            LeftLeg = {},
+            RightLeg = {},
+            HipsTorso = {}
+        },
+        Chams = {
+            Head = {},
+            Torso = {},
+            LeftArm = {},
+            RightArm = {},
+            LeftLeg = {},
+            RightLeg = {}
+        },
+        Title = {
+            Text = nil
+        },
+        Distance = {
+            Text = nil
+        },
+        Tool = {
+            Text = nil
+        },
+        Flags = {
+            Text = nil
+        }
+    }
+}
+
+-- Создаем все элементы с прозрачностью 0 (полностью невидимыми)
+local esppreview_frame = utility:Create("Frame", {Vector2.new(main_frame.Size.X + 5,0), main_frame}, {
+    Size = utility:Size(0, 236, 0, 339),
+    Position = utility:Position(1, 5, 0, 0, main_frame),
+    Color = theme.outline,
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+library.colors[esppreview_frame] = {
+    Color = "outline"
+}
+
+local esppreview_inline = utility:Create("Frame", {Vector2.new(1,1), esppreview_frame}, {
+    Size = utility:Size(1, -2, 1, -2, esppreview_frame),
+    Position = utility:Position(0, 1, 0, 1, esppreview_frame),
+    Color = theme.accent,
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+library.colors[esppreview_inline] = {
+    Color = "accent"
+}
+
+local esppreview_inner = utility:Create("Frame", {Vector2.new(1,1), esppreview_inline}, {
+    Size = utility:Size(1, -2, 1, -2, esppreview_inline),
+    Position = utility:Position(0, 1, 0, 1, esppreview_inline),
+    Color = theme.lightcontrast,
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+library.colors[esppreview_inner] = {
+    Color = "lightcontrast"
+}
+
+local esppreview_title = utility:Create("TextLabel", {Vector2.new(4,2), esppreview_inner}, {
+    Text = "ESP Preview",
+    Size = theme.textsize,
+    Font = theme.font,
+    Color = theme.textcolor,
+    OutlineColor = theme.textborder,
+    Position = utility:Position(0, 4, 0, 2, esppreview_inner),
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+local esppreview_visiblebutton = utility:Create("TextLabel", {Vector2.new(esppreview_inner.Size.X - (5 + 7),2), esppreview_inner}, {
+    Text = "O",
+    Size = theme.textsize,
+    Font = theme.font,
+    Color = theme.textcolor,
+    OutlineColor = theme.textborder,
+    Position = utility:Position(1, -(5 + 7), 0, 2, esppreview_inner),
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+library.colors[esppreview_title] = {
+    OutlineColor = "textborder",
+    Color = "textcolor"
+}
+
+local esppreview_inner_inline = utility:Create("Frame", {Vector2.new(4,18), esppreview_inner}, {
+    Size = utility:Size(1, -8, 1, -22, esppreview_inner),
+    Position = utility:Position(0, 4, 0, 18, esppreview_inner),
+    Color = theme.inline,
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+library.colors[esppreview_inner_inline] = {
+    Color = "inline"
+}
+
+local esppreview_inner_outline = utility:Create("Frame", {Vector2.new(1,1), esppreview_inner_inline}, {
+    Size = utility:Size(1, -2, 1, -2, esppreview_inner_inline),
+    Position = utility:Position(0, 1, 0, 1, esppreview_inner_inline),
+    Color = theme.outline,
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+library.colors[esppreview_inner_outline] = {
+    Color = "outline"
+}
+
+local esppreview_inner_frame = utility:Create("Frame", {Vector2.new(1,1), esppreview_inner_outline}, {
+    Size = utility:Size(1, -2, 1, -2, esppreview_inner_outline),
+    Position = utility:Position(0, 1, 0, 1, esppreview_inner_outline),
+    Color = theme.darkcontrast,
+    Transparency = 0 -- Делаем полностью прозрачным
+})
+
+library.colors[esppreview_inner_frame] = {
+    Color = "darkcontrast"
+}
+
+local esppreview_frame_previewbox = utility:Create("Frame", {Vector2.new(10,10), esppreview_inner_frame}, {
+    Size = utility:Size(1, -20, 1, -20, esppreview_inner_frame),
+    Position = utility:Position(0, 10, 0, 10, esppreview_inner_frame),
+    Color = Color3.fromRGB(0, 0, 0),
+    Transparency = 0 -- Делаем полностью прозрачным
+})
             --
             local BoxSize = utility:Size(1, -7, 1, -55, esppreview_frame_previewbox)
             local healthbaroutline
